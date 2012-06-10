@@ -1,7 +1,7 @@
 call pathogen#infect()
 
 if has('gui_running')
-	colorscheme eclipse "lucius
+	colorscheme eclipse 
 else 
 	colorscheme darkZ
 endif
@@ -21,12 +21,12 @@ let g:CommandTMaxCachedDirectories = 3
 let g:syntastic_phpcs_conf = " --standard=Zend "
 
 " dbext profiles
-let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=root:passwd=1:dbname=palladium:extra=-t'
+let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=root:passwd=1:extra=-t'
 
 " Sidebars mappings
-nmap <Leader>e :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-nmap <Leader>ep :NERDTree  
-nmap <Leader>o :TagbarToggle<CR>:NERDTreeMirror<CR>
+nmap <Leader>fe :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+nmap <Leader>fep :NERDTree 
+nmap <Leader>o :TagbarToggle<CR>
 
 " customize cursor lines
 hi CursorLine   cterm=NONE ctermbg=none guibg=black 
@@ -37,6 +37,7 @@ nnoremap <Leader>vr :so ~/.vimrc<CR>
 set clipboard=unnamedplus
 set relativenumber 
 set cursorline
+set mouse=a
 
 " Formating settings
 set expandtab
@@ -62,7 +63,6 @@ set ignorecase
 set lz 
 set ffs=unix,dos,mac 
 set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866 
-
 
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType php let php_sql_query=1
@@ -100,10 +100,30 @@ noremap <PageUp> :call MyPageUp()<CR>
 noremap <PageDown> :call MyPageDown()<CR>
 
 " Debugger
-map <F9> :DbgStepInto<CR>
-map <F10> :DbgStepOver<CR>
-map <S-F9> :DbgStepOut<CR>
-map <F5> :DbgRun<CR>
-map <S-F5> :DbgDetach<CR>
-map <F8> :DbgToggleBreakpoint<CR>
+" Unmap default key maps to avoid conflicts with Desktop Environment
+autocmd VimEnter * unmap <F1>
+autocmd VimEnter * unmap <F2>
+autocmd VimEnter * unmap <F3>
+autocmd VimEnter * unmap <F4>
+" autocmd VimEnter * unmap <F5>
+" autocmd VimEnter * unmap <F6>
+autocmd VimEnter * unmap <F10>
+autocmd VimEnter * unmap <F11>
+autocmd VimEnter * unmap <F12>
+ 
+" remap it all with Leader key
+map <Leader>dm :python debugger_mark()<cr>
+" map <Leader>dR :python debugger_resize()<cr>
+map <Leader>di :python debugger_command('step_into')<cr>
+map <Leader>dn :python debugger_command('step_over')<cr>
+map <Leader>do :python debugger_command('step_out')<cr>
 
+" map <Leader>dr :python debugger_run()<cr>
+" map <Leader>dq :python debugger_quit()<cr>
+
+map <Leader>dg :python debugger_globals()<cr>
+map <Leader>dc :python debugger_context()<cr>
+map <Leader>dp :python debugger_property()<cr>
+
+nnoremap <Leader>e :python debugger_watch_input("eval")<cr>A
+vnoremap <Leader>e :python debugger_visual_eval()<cr>A
