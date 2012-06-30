@@ -1,12 +1,18 @@
-call pathogen#infect()
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+filetype plugin indent on
 
 if has('gui_running')
 	colorscheme eclipse 
 else 
-	colorscheme darkZ
+	colorscheme navajo
 endif
 
 set nocompatible 
+set hidden 
+syntax on
+map Q <Nop>
 
 " Ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -14,17 +20,26 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 " Fugitive status line
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-" Command-T
-let g:CommandTMaxCachedDirectories = 3
-
 " Syntastic settings
 let g:syntastic_phpcs_conf = " --standard=Zend "
 
 " dbext profiles
 let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=root:passwd=1:extra=-t'
 
+" phpdoc mappings
+map <Leader>pd :set paste<CR>:exe PhpDoc()<CR>:set nopaste<CR>i
+let g:pdv_cfg_php4always = 0
+let g:pdv_cfg_php4guess = 0
+let g:pdv_cfg_php4guessval = 0
+let g:pdv_cfg_folds = 0
+
+" Quick save
+map <F2> :w<cr>
+imap <F2> <c-o>:w<cr>
+
 " Sidebars mappings
 nmap <Leader>fe :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+nmap <Leader>fef :NERDTreeFind<CR>
 nmap <Leader>fep :NERDTree 
 nmap <Leader>o :TagbarToggle<CR>
 
@@ -34,6 +49,7 @@ hi CursorColumn cterm=NONE ctermbg=darkgray guibg=darkgray
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <Leader>vr :so ~/.vimrc<CR>
 
+" copy/paste to X buffer
 set clipboard=unnamedplus
 set relativenumber 
 set cursorline
@@ -64,10 +80,23 @@ set lz
 set ffs=unix,dos,mac 
 set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866 
 
+" Tabs mappings
+map <Leader>tt :tabe 
+map <Leader>tc :tabc<cr>
+
+" Edit another file in the same directory as the current file
+" uses expression to extract path from current file's path
+map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
+map <Leader>es :split <C-R>=expand("%:p:h") . '/'<CR>
+map <Leader>ev :vnew <C-R>=expand("%:p:h") . '/'<CR>
+
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType php let php_sql_query=1
 autocmd FileType php let php_htmlInStrings=1
 autocmd FileType php let php_noShortTags=1
+
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
 
 " i could'nt find any get_number_of_visible_lines function, so i made my own.
 function! GetNumberOfVisibleLines()
@@ -125,5 +154,5 @@ map <Leader>dg :python debugger_globals()<cr>
 map <Leader>dc :python debugger_context()<cr>
 map <Leader>dp :python debugger_property()<cr>
 
-nnoremap <Leader>e :python debugger_watch_input("eval")<cr>A
-vnoremap <Leader>e :python debugger_visual_eval()<cr>A
+nnoremap <Leader>de :python debugger_watch_input("eval")<cr>A
+vnoremap <Leader>de :python debugger_visual_eval()<cr>A
