@@ -28,8 +28,11 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 " requires ctags
 Bundle 'majutsushi/tagbar.git'
 
+Bundle 'matchit.zip'
 " misc
 Bundle 'millermedeiros/vim-statline.git'
+Bundle 'Raimondi/delimitMate.git'
+Bundle 'snipMate'
 
 " Quick save
 map <F2> :w<cr>
@@ -52,7 +55,7 @@ syntax on
 colorscheme desert
 set wildmenu
 set hidden 
-set guioptions-=T 
+set guioptions-=TrL
 set relativenumber 
 set cursorline
 set mouse=a
@@ -89,6 +92,8 @@ map <Leader>tc :tabc<cr>
 map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>es :split <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>ev :vnew <C-R>=expand("%:p:h") . '/'<CR>
+
+map <Leader>eh :e C:\Windows\System32\drivers\etc\hosts<cr>
 
 map <Leader>xf :%!xmllint --format --encode UTF-8 - <cr>
 
