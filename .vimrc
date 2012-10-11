@@ -5,27 +5,27 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 if has('gui_running')
-	colorscheme molokai " freya silent 
-else 
+	colorscheme molokai " freya silent
+else
 	colorscheme desert
 endif
 
 filetype plugin indent on
 syntax on
-set hidden 
+set hidden
 
 " let Vundle manage Vundle
-" required! 
 Bundle 'gmarik/vundle'
 
-" debugger
+" debugger for Dbgp interface
+" php, nodejs, python, ruby, perl...
 Bundle 'joonty/vdebug.git'
 let g:vdebug_keymap = {
 \    "run" : "<F5>",
 \    "run_to_cursor" : "<Leader>dc",
 \    "step_over" : "<Leader>dn",
 \    "step_into" : "<Leader>di",
-\    "step_out" : "<Leader>du",
+\    "step_out" : "<Leader>do",
 \    "close" : "<F6>",
 \    "detach" : "<F7>",
 \    "set_breakpoint" : "<Leader>db",
@@ -47,8 +47,8 @@ Bundle 'The-NERD-tree'
 " unite. experimental
 Bundle 'unite.vim'
 Bundle 'Shougo/vimfiler.git'
+Bundle 'Shougo/vimproc'
 Bundle 'neocomplcache'
-Bundle 'neocomplcache-snippets_complete'
 
 nmap <Leader>fe :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
 nmap <Leader>fef :VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
@@ -61,8 +61,8 @@ Bundle 'delimitMate.vim'
 Bundle 'surround.vim'
 Bundle 'repeat.vim'
 Bundle 'matchit.zip'
-Bundle 'scrooloose/nerdcommenter.git'
-Bundle 'msanders/snipmate.vim.git'
+Bundle 'tomtom/tcomment_vim.git'
+Bundle 'SirVer/ultisnips.git'
 Bundle 'mattn/zencoding-vim.git'
 
 Bundle 'Gundo'
@@ -105,14 +105,14 @@ map <F2> :w<cr>
 imap <F2> <c-o>:w<cr>
 
 " customize cursor lines
-hi CursorLine   cterm=NONE ctermbg=none guibg=black 
+hi CursorLine   cterm=NONE ctermbg=none guibg=black
 hi CursorColumn cterm=NONE ctermbg=darkgray guibg=darkgray
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <Leader>vr :so ~/.vimrc<CR>
 
 " copy/paste to X buffer
 set clipboard=unnamedplus
-set relativenumber 
+set relativenumber
 set cursorline
 
 set mouse=a
@@ -127,19 +127,19 @@ set cin " включим отступы в стиле Си
 " backup settings
 set nowritebackup
 set noswapfile
-set nobackup  
-set backupdir=$HOME/.vim/backups 
-set directory=$HOME/.vim/temp 
+set nobackup
+set backupdir=$HOME/.vim/backups
+set directory=$HOME/.vim/temp
 
 " search and wildmenu
 set wildmenu
-set showmatch 
-set hlsearch 
-set incsearch 
-set ignorecase 
-set lz 
-set ffs=unix,dos,mac 
-set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866 
+set showmatch
+set hlsearch
+set incsearch
+set ignorecase
+set lz
+set ffs=unix,dos,mac
+set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
 set gdefault
 
 " crazy regexp search
@@ -147,7 +147,7 @@ nnoremap / /\v
 vnoremap / /\v
 
 " Tabs mappings
-map <Leader>tt :tabe 
+map <Leader>tt :tabe
 map <Leader>tc :tabc<cr>
 
 " Edit another file in the same directory as the current file
@@ -163,3 +163,6 @@ autocmd FileType php let php_noShortTags=1
 
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
+" autoremove trailing spaces
+autocmd BufWritePre * :%s/\s\+$//e
+
