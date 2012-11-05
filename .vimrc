@@ -17,26 +17,6 @@ set hidden
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
-" debugger for Dbgp interface
-" php, nodejs, python, ruby, perl...
-Bundle 'joonty/vdebug.git'
-let g:vdebug_keymap = {
-\    "run" : "<F5>",
-\    "run_to_cursor" : "<Leader>dc",
-\    "step_over" : "<Leader>dn",
-\    "step_into" : "<Leader>di",
-\    "step_out" : "<Leader>do",
-\    "close" : "<F6>",
-\    "detach" : "<F7>",
-\    "set_breakpoint" : "<Leader>db",
-\    "get_context" : "<Leader>dg",
-\}
-
-" project
-"Bundle 'DfrankUtil'
-"Bundle 'vimprj'
-"Bundle 'indexer.tar.gz'
-
 " quick search
 Bundle 'ctrlp.vim'
 Bundle 'ack.vim'
@@ -44,15 +24,8 @@ let g:ctrlp_lazy_update = 1
 let g:ackprg="ack-grep -H --nocolor --nogroup --column "
 
 Bundle 'The-NERD-tree'
-" unite. experimental
-Bundle 'unite.vim'
-Bundle 'Shougo/vimfiler.git'
-Bundle 'Shougo/vimproc'
-Bundle 'neocomplcache'
-
-nmap <Leader>fe :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
-nmap <Leader>fef :VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
-let g:vimfiler_as_default_explorer=1
+nmap <Leader>fe :NERDTreeToggle<CR>
+nmap <Leader>fef :NERDTreeFind<CR>
 
 " quick navigation && edit
 Bundle 'EasyMotion'
@@ -62,18 +35,7 @@ Bundle 'surround.vim'
 Bundle 'repeat.vim'
 Bundle 'matchit.zip'
 Bundle 'tomtom/tcomment_vim.git'
-Bundle 'SirVer/ultisnips.git'
 Bundle 'mattn/zencoding-vim.git'
-
-Bundle 'Gundo'
-
-" Code tools "
-Bundle 'Syntastic'
-Bundle 'Tagbar'
-Bundle 'techlivezheng/tagbar-phpctags.git'
-Bundle 'wesleyche/SrcExpl.git'
-let g:syntastic_phpcs_conf = " --standard=Zend "
-nmap <Leader>o :TagbarToggle<CR>
 
 " php
 Bundle 'phpcomplete.vim'
@@ -112,7 +74,7 @@ nnoremap <Leader>vr :so ~/.vimrc<CR>
 
 " copy/paste to X buffer
 set clipboard=unnamedplus
-set relativenumber
+set number
 set cursorline
 
 set mouse=a
