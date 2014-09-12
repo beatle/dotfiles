@@ -5,3 +5,9 @@
 --regex-PHP=/abstract\s+class\s+([^ ]+)/\1/c/
 --regex-PHP=/interface\s+([^ ]+)/\1/c/
 --regex-PHP=/(public\s+|static\s+|abstract\s+|protected\s+|private\s+)function\s+\&?\s*([^ (]+)/\2/f/
+
+--langdef=markdown
+--langmap=markdown:.md
+--regex-markdown=/^#[ \t]+(.*)/\1/h,Heading_L1/
+--regex-markdown=/^##[ \t]+(.*)/\1/i,Heading_L2/
+--regex-markdown=/^###[ \t]+(.*)/\1/k,Heading_L3/

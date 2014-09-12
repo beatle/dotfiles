@@ -1,14 +1,14 @@
 set nocompatible " be iMproved
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 filetype plugin indent on
 syntax on
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim.git'
 
 " Fun
 Bundle 'Lokaltog/vim-powerline.git'
@@ -18,6 +18,8 @@ Bundle 'vim-scripts/Colour-Sampler-Pack.git'
 
 " Dbgp debugger
 Bundle 'joonty/vdebug.git'
+" Bundle "gilligan/vim-lldb"
+
 
 " git support
 Bundle 'gitv'
@@ -35,6 +37,7 @@ Bundle 'neocomplcache'
 " quick search
 Bundle 'ctrlp.vim'
 Bundle 'mileszs/ack.vim.git'
+Bundle 'yuratomo/w3m.vim.git'
 
 " Project switch
 Bundle 'DfrankUtil'
@@ -51,6 +54,7 @@ Bundle 'repeat.vim'
 Bundle 'matchit.zip'
 Bundle 'tomtom/tcomment_vim.git'
 Bundle 'SirVer/ultisnips.git'
+Bundle 'honza/vim-snippets'
 Bundle 'mattn/zencoding-vim.git'
 
 " Code tools "
@@ -58,15 +62,43 @@ Bundle 'Syntastic'
 Bundle 'Tagbar'
 
 " Python
-Bundle 'https://github.com/sontek/rope-vim.git'
+" Bundle 'https://github.com/sontek/rope-vim.git'
 
 " Php bundles
 " Bundle 'phpcomplete.vim'
+" Bundle 'phpfolding.vim'
 Bundle 'techlivezheng/tagbar-phpctags.git'
 Bundle "shawncplus/phpcomplete.vim.git"
-Bundle 'phpfolding.vim'
 Bundle 'joonty/vim-phpqa.git'
 Bundle '2072/PHP-Indenting-for-VIm.git'
+
+" Ruby
+Bundle 'ruby.vim'
+Bundle 'ftpluginruby.vim'
+Bundle 'ruby-matchit'
+Bundle "tpope/vim-rails"
+
+" html
+Bundle 'othree/html5.vim'
+
+" js
+Bundle 'Enhanced-Javascript-syntax'
+
+" Css
+" Bundle 'csslint.vim'
+Bundle 'hail2u/vim-css3-syntax.git'
+Bundle 'skammer/vim-css-color.git'
+Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim.git'
+Bundle 'groenewege/vim-less.git'
+
+let g:tagbar_type_markdown = {
+    \ 'ctagstype' : 'markdown',
+    \ 'kinds' : [
+        \ 'h:Heading_L1',
+        \ 'i:Heading_L2',
+        \ 'k:Heading_L3'
+    \ ]
+\ }
 
 let g:vdebug_keymap = {
 \    "run" : "<F5>",
@@ -134,6 +166,7 @@ set laststatus=2
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set wildmenu
 set relativenumber
+set number
 set cursorline
 set scrolloff=4 " keep 2 lines off the edges of the screen when scrolling
 set hidden
@@ -157,7 +190,8 @@ autocmd FileType php let php_noShortTags=1
 
 let g:vimfiler_as_default_explorer=1
 
-let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=root:passwd=1:extra=-t'
+" let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=root:passwd=1:extra=-t'
+let g:dbext_default_profile_postgres_local = 'type=PGSQL:user=postgres:passwd=1:extra=-t'
 
 " vdebug
 let g:watch_window_style="compact"
@@ -181,8 +215,9 @@ let g:xml_syntax_folding=1
 let g:vimprj_changeCurDirIfVimprjFound=0
 
 set t_Co=256
+set tags+=~/.rvm/gems/ruby-2.1.1/gems/tags
 if has('gui_running')
-	colorscheme zendnb " molokai freya silent
+	colorscheme inte " molokai freya silent
 else
 	" colorscheme desert
 	colorscheme eclipse
