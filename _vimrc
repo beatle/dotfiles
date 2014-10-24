@@ -1,7 +1,7 @@
 set nocompatible " be iMproved
 filetype off
 
-set rtp+=~/_vimfiles/bundle/vundle/
+set rtp+=~/_vimfiles/bundle/Vundle.vim/
 call vundle#rc()
 
 filetype plugin indent on
@@ -28,13 +28,16 @@ Bundle 'dbext.vim'
 
 " unite vim
 Bundle 'unite.vim'
-" Bundle 'Shougo/vimfiler.git'
-" Bundle 'Shougo/vimproc'
-" Bundle 'neocomplcache'
+Bundle 'Shougo/vimfiler.git'
+Bundle 'Shougo/vimproc'
+Bundle 'neocomplcache'
+
+Bundle 'tpope/vim-vinegar'
+Bundle 'tpope/vim-projectionist'
 
 " Bundle 'scrooloose/nerdtree.git'
-Bundle 'xolox/vim-session.git'
-Bundle 'xolox/vim-misc'
+" Bundle 'xolox/vim-session.git'
+" Bundle 'xolox/vim-misc'
 
 " quick search
 Bundle 'ctrlp.vim'
@@ -55,7 +58,7 @@ Bundle 'repeat.vim'
 Bundle 'matchit.zip'
 Bundle 'tomtom/tcomment_vim.git'
 Bundle 'SirVer/ultisnips.git'
-Bundle 'mattn/zencoding-vim.git'
+Bundle 'mattn/emmet-vim.git'
 
 " Code tools "
 Bundle 'Syntastic'
@@ -76,10 +79,10 @@ Bundle 'Tagbar'
 " Bundle '2072/PHP-Indenting-for-VIm.git'
 
 " Ruby
-Bundle 'ruby.vim'
-Bundle 'ftpluginruby.vim'
-Bundle 'ruby-matchit'
-Bundle "tpope/vim-rails"
+" Bundle 'ruby.vim'
+" Bundle 'ftpluginruby.vim'
+" Bundle 'ruby-matchit'
+" Bundle "tpope/vim-rails"
 
 " Css
 Bundle 'hail2u/vim-css3-syntax.git'
@@ -89,12 +92,21 @@ Bundle 'groenewege/vim-less.git'
 
 " html
 Bundle 'othree/html5.vim'
+
 " js
-Bundle 'Enhanced-Javascript-syntax'
+" Bundle 'Enhanced-Javascript-syntax'
+Bundle 'jelera/vim-javascript-syntax'
+" Bundle 'marijnh/tern_for_vim'
+Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'vim-scripts/JavaScript-Indent'
+Bundle 'honza/vim-snippets'
+Bundle 'mustache/vim-mustache-handlebars.git'
 
 " .NET world
 Bundle 'aspnetide.vim'
 Bundle 'csharp.vim'
+Bundle 'nosami/Omnisharp.git'
+Bundle 'OrangeT/vim-csharp.git'
 Bundle 'cs.vim'
 Bundle 'ASPJScript'
 Bundle 'aspnet.vim'
@@ -188,7 +200,7 @@ if has("autocmd")
     autocmd BufNewFile,BufRead *.vb set ft=vbnet
     autocmd BufNewFile,BufRead *.json set ft=javascript
     autocmd BufNewFile,BufRead *.cshtml,*.aspx,*.ascx,*.Master set ft=html
-    autocmd BufNewFile,BufRead *.build set ft=xml
+    autocmd BufNewFile,BufRead *.build, *.oproj set ft=xml
     autocmd BufNewFile,BufRead *.txt,README,INSTALL,TODO if &ft == "" | set ft=text | endif
   augroup END "}}}2
 
@@ -201,7 +213,7 @@ if has("autocmd")
 endif
 
 let g:wwwsearch_command_to_open_uri="start rundll32 url.dll,FileProtocolHandler {uri}"
-" let g:vimfiler_as_default_explorer=1
+let g:vimfiler_as_default_explorer=1
 
 let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=root:passwd=1:extra=-t'
 
@@ -211,7 +223,8 @@ let g:watch_window_style="compact"
 let g:ctrlp_max_files = 40000
 let g:ctrlp_lazy_update = 1
 
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+let g:ackprg="ack -H --nocolor --nogroup --column"
+" let g:ackprg = 'nak'
 
 let ropevim_vim_completion=1
 let ropevim_extended_complete=1
