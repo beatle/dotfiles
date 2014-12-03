@@ -1,11 +1,8 @@
-set nocompatible " be iMproved
+set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
-
-filetype plugin indent on
-syntax on
+call vundle#begin()
 
 " let Vundle manage Vundle
 Bundle 'gmarik/Vundle.vim.git'
@@ -28,10 +25,12 @@ Bundle 'fugitive.vim'
 " rdbms support
 Bundle 'dbext.vim'
 
+Bundle 'tpope/vim-vinegar.git'
+
 " unite vim
 Bundle 'unite.vim'
-Bundle 'Shougo/vimfiler.git'
-Bundle 'Shougo/vimproc'
+" Bundle 'Shougo/vimfiler.git'
+" Bundle 'Shougo/vimproc'
 Bundle 'neocomplcache'
 
 " quick search
@@ -55,7 +54,8 @@ Bundle 'matchit.zip'
 Bundle 'tomtom/tcomment_vim.git'
 Bundle 'SirVer/ultisnips.git'
 Bundle 'honza/vim-snippets'
-Bundle 'mattn/zencoding-vim.git'
+Bundle 'mattn/emmet-vim'
+Bundle 'christoomey/vim-tmux-navigator'
 
 " Code tools "
 Bundle 'Syntastic'
@@ -78,11 +78,28 @@ Bundle 'ftpluginruby.vim'
 Bundle 'ruby-matchit'
 Bundle "tpope/vim-rails"
 
+" .NET world
+if has("win32") || has("win16") || has("win64")
+    Bundle 'aspnetide.vim'
+else
+    Bundle 'vim-scripts/gmcs.vim.git'
+end
+
+Bundle 'csharp.vim'
+Bundle 'cs.vim'
+Bundle 'ASPJScript'
+Bundle 'aspnet.vim'
+Bundle 'aspnetcs'
+Bundle 'adamclerk/vim-razor.git'
+
+" https://github.com/nosami/Omnisharp
+
 " html
 Bundle 'othree/html5.vim'
 
 " js
 Bundle 'Enhanced-Javascript-syntax'
+Bundle 'marijnh/tern_for_vim.git'
 
 " Css
 " Bundle 'csslint.vim'
@@ -90,6 +107,11 @@ Bundle 'hail2u/vim-css3-syntax.git'
 Bundle 'skammer/vim-css-color.git'
 Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim.git'
 Bundle 'groenewege/vim-less.git'
+
+call vundle#end()
+
+filetype plugin indent on
+syntax on
 
 let g:tagbar_type_markdown = {
     \ 'ctagstype' : 'markdown',
@@ -112,9 +134,9 @@ let g:vdebug_keymap = {
 \    "get_context" : "<Leader>dg",
 \}
 
-nmap <Leader>e :VimFiler<CR>
-nmap <Leader>es :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
-nmap <Leader>ef :VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
+" nmap <Leader>e :VimFiler<CR>
+" nmap <Leader>es :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
+" nmap <Leader>ef :VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
 nmap <Leader>b :Unite buffer<CR>
 nmap <Leader>t :Unite tab<CR>
 nmap <Leader>o :TagbarToggle<CR>
@@ -168,7 +190,8 @@ set wildmenu
 set relativenumber
 set number
 set cursorline
-set scrolloff=4 " keep 2 lines off the edges of the screen when scrolling
+" keep 2 lines off the edges of the screen when scrolling
+set scrolloff=4
 set hidden
 
 " search and wildmenu
@@ -188,10 +211,11 @@ autocmd FileType php let php_sql_query=1
 autocmd FileType php let php_htmlInStrings=1
 autocmd FileType php let php_noShortTags=1
 
-let g:vimfiler_as_default_explorer=1
+" let g:vimfiler_as_default_explorer=1
 
 " let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=root:passwd=1:extra=-t'
 let g:dbext_default_profile_postgres_local = 'type=PGSQL:user=postgres:passwd=1:extra=-t'
+let g:dbext_eventbox_profile_postgres_local = 'type=PGSQL:dbname=eventbox:user=eventbox:passwd=1:port=5432:extra=-t'
 
 " vdebug
 let g:watch_window_style="compact"
@@ -216,10 +240,12 @@ let g:vimprj_changeCurDirIfVimprjFound=0
 
 set t_Co=256
 set tags+=~/.rvm/gems/ruby-2.1.1/gems/tags
+colorscheme winter
 if has('gui_running')
-	colorscheme inte " molokai freya silent
+	colorscheme intelij
+	" molokai freya silent
 else
 	" colorscheme desert
-	colorscheme eclipse
+	colorscheme winter
 endif
 
