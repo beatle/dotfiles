@@ -1,11 +1,8 @@
-set nocompatible " be iMproved
+set nocompatible
 filetype off
 
-set rtp+=~/_vimfiles/bundle/Vundle.vim/
-call vundle#rc()
-
-filetype plugin indent on
-syntax on
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
@@ -64,9 +61,6 @@ Bundle 'mattn/emmet-vim.git'
 Bundle 'Syntastic'
 Bundle 'Tagbar'
 
-" Frontend
-" Bundle 'csslint.vim'
-
 " Python
 " Bundle 'https://github.com/sontek/rope-vim.git'
 
@@ -85,10 +79,12 @@ Bundle 'Tagbar'
 " Bundle "tpope/vim-rails"
 
 " Css
+" Bundle 'csslint.vim'
 Bundle 'hail2u/vim-css3-syntax.git'
 Bundle 'skammer/vim-css-color.git'
 Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim.git'
 Bundle 'groenewege/vim-less.git'
+
 
 " html
 Bundle 'othree/html5.vim'
@@ -112,6 +108,11 @@ Bundle 'ASPJScript'
 Bundle 'aspnet.vim'
 Bundle 'aspnetcs'
 Bundle 'adamclerk/vim-razor.git'
+
+call vundle#end()
+
+filetype plugin indent on
+syntax on
 
 let g:vdebug_keymap = {
 \    "run" : "<F5>",
