@@ -5,108 +5,107 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/Vundle.vim.git'
+Plugin 'gmarik/Vundle.vim.git'
 
 " Fun
-Bundle 'Lokaltog/vim-powerline.git'
-Bundle 'vim-scripts/Colour-Sampler-Pack.git'
-" Bundle 'Colour-Sampler-Pack'
-" Bundle 'daylerees/colour-schemes.git'
-
-" Dbgp debugger
-Bundle 'joonty/vdebug.git'
-" Bundle "gilligan/vim-lldb"
-
-
-" git support
-Bundle 'gitv'
-Bundle 'fugitive.vim'
-
-" rdbms support
-Bundle 'dbext.vim'
-
-Bundle 'tpope/vim-vinegar.git'
-
-" unite vim
-Bundle 'unite.vim'
-" Bundle 'Shougo/vimfiler.git'
-" Bundle 'Shougo/vimproc'
-Bundle 'neocomplcache'
-
-" quick search
-Bundle 'ctrlp.vim'
-Bundle 'mileszs/ack.vim.git'
-Bundle 'yuratomo/w3m.vim.git'
-
-" Project switch
-Bundle 'DfrankUtil'
-Bundle 'vimprj'
-Bundle 'cscope.vim'
-"Bundle 'indexer.tar.gz'
-
-" quick motion && edit
-Bundle 'EasyMotion'
-Bundle 'unimpaired.vim'
-Bundle 'delimitMate.vim'
-Bundle 'surround.vim'
-Bundle 'repeat.vim'
-Bundle 'matchit.zip'
-Bundle 'tomtom/tcomment_vim.git'
-Bundle 'SirVer/ultisnips.git'
-Bundle 'honza/vim-snippets'
-Bundle 'mattn/emmet-vim'
-Bundle 'christoomey/vim-tmux-navigator'
-
-" Code tools "
-Bundle 'Syntastic'
-Bundle 'Tagbar'
-
-" Python
-" Bundle 'https://github.com/sontek/rope-vim.git'
-
-" Php bundles
-" Bundle 'phpcomplete.vim'
-" Bundle 'phpfolding.vim'
-Bundle 'techlivezheng/tagbar-phpctags.git'
-Bundle "shawncplus/phpcomplete.vim.git"
-Bundle 'joonty/vim-phpqa.git'
-Bundle '2072/PHP-Indenting-for-VIm.git'
+Plugin 'bling/vim-airline'
+Plugin 'vim-scripts/Colour-Sampler-Pack.git'
 
 " Ruby
-Bundle 'ruby.vim'
-Bundle 'ftpluginruby.vim'
-Bundle 'ruby-matchit'
-Bundle "tpope/vim-rails"
+Plugin 'ruby.vim'
+Plugin 'ftpluginruby.vim'
+Plugin 'ruby-matchit'
+Plugin 'tpope/vim-rails'
+
+" Plugin 'https://github.com/sontek/rope-vim.git'
+" git
+Plugin 'gitv'
+Plugin 'fugitive.vim'
+
+" db
+Plugin 'dbext.vim'
+
+" project
+" Plugin 'unite.vim'
+" Plugin 'neocomplcache'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'tpope/vim-vinegar.git'
+Plugin 'dsawardekar/portkey.git'
+Plugin 'ctrlp.vim'
+Plugin 'mileszs/ack.vim.git'
+Plugin 'yuratomo/w3m.vim.git'
+Plugin 'DfrankUtil'
+Plugin 'vimprj'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-dispatch.git'
+
+" quick motion && edit
+Plugin 'EasyMotion'
+Plugin 'unimpaired.vim'
+Plugin 'delimitMate.vim'
+Plugin 'surround.vim'
+Plugin 'repeat.vim'
+Plugin 'matchit.zip'
+Plugin 'tomtom/tcomment_vim.git'
+Plugin 'SirVer/ultisnips.git'
+Plugin 'honza/vim-snippets'
+Plugin 'mattn/emmet-vim'
+Plugin 'christoomey/vim-tmux-navigator'
+
+" Code tools
+Plugin 'Syntastic'
+Plugin 'Tagbar'
+Plugin 'cscope.vim'
+Plugin 'xuhdev/SingleCompile'
+Plugin 'Chiel92/vim-autoformat'
+"Plugin 'indexer.tar.gz'
+
+" Python
+
+" Php bundles
+"" Bundle 'phpcomplete.vim'
+"" Bundle 'phpfolding.vim'
+Plugin 'techlivezheng/tagbar-phpctags.git'
+Plugin 'shawncplus/phpcomplete.vim.git'
+Plugin 'joonty/vim-phpqa.git'
+Plugin '2072/PHP-Indenting-for-VIm.git'
+
 
 " .NET world
 if has("win32") || has("win16") || has("win64")
-    Bundle 'aspnetide.vim'
+    Plugin 'aspnetide.vim'
 else
-    Bundle 'vim-scripts/gmcs.vim.git'
+    Plugin 'vim-scripts/gmcs.vim.git'
 end
-
-Bundle 'csharp.vim'
-Bundle 'cs.vim'
-Bundle 'ASPJScript'
-Bundle 'aspnet.vim'
-Bundle 'aspnetcs'
-Bundle 'adamclerk/vim-razor.git'
+Plugin 'csharp.vim'
+Plugin 'cs.vim'
+Plugin 'ASPJScript'
+Plugin 'aspnet.vim'
+Plugin 'aspnetcs'
+Plugin 'adamclerk/vim-razor.git'
 
 " https://github.com/nosami/Omnisharp
 
 " html
-Bundle 'othree/html5.vim'
+Plugin 'othree/html5.vim'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " js
-Bundle 'Enhanced-Javascript-syntax'
-Bundle 'marijnh/tern_for_vim.git'
+Plugin 'isRuslan/vim-es6'
+Plugin 'Enhanced-Javascript-syntax'
+Plugin 'marijnh/tern_for_vim.git'
+Plugin 'jason0x43/vim-js-indent'
+Plugin 'https://github.com/leafgarland/typescript-vim'
+Plugin 'dsawardekar/ember.vim'
+Plugin 'Quramy/tsuquyomi'
 
 " Css
 " Bundle 'csslint.vim'
-Bundle 'hail2u/vim-css3-syntax.git'
-Bundle 'skammer/vim-css-color.git'
-Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim.git'
-Bundle 'groenewege/vim-less.git'
+Plugin 'hail2u/vim-css3-syntax.git'
+Plugin 'skammer/vim-css-color.git'
+Plugin 'ChrisYip/Better-CSS-Syntax-for-Vim.git'
+Plugin 'groenewege/vim-less.git'
 
 call vundle#end()
 
@@ -137,7 +136,7 @@ let g:vdebug_keymap = {
 " nmap <Leader>e :VimFiler<CR>
 " nmap <Leader>es :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
 " nmap <Leader>ef :VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
-nmap <Leader>b :Unite buffer<CR>
+nmap <Leader>b :CtrlPBuffer<CR>
 nmap <Leader>t :Unite tab<CR>
 nmap <Leader>o :TagbarToggle<CR>
 
@@ -163,6 +162,8 @@ set nowrap
 set nowritebackup
 set noswapfile
 set nobackup
+" do not fold by default
+set foldlevelstart=99
 
 " set backupdir=$HOME/.vim/backups
 " set directory=$HOME/.vim/temp
@@ -238,14 +239,25 @@ let g:syntastic_phpcs_conf = " --standard=Zend "
 let g:xml_syntax_folding=1
 let g:vimprj_changeCurDirIfVimprjFound=0
 
+let g:syntastic_javascript_checkers = ['eslint']
+
 set t_Co=256
 set tags+=~/.rvm/gems/ruby-2.1.1/gems/tags
-colorscheme winter
+colorscheme vividchalk
+
 if has('gui_running')
 	colorscheme intelij
 	" molokai freya silent
 else
 	" colorscheme desert
-	colorscheme winter
+	colorscheme navajo
+    let g:airline_theme='understated'
 endif
 
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunc
