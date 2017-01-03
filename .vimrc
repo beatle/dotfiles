@@ -11,37 +11,19 @@ Plugin 'gmarik/Vundle.vim.git'
 Plugin 'bling/vim-airline'
 Plugin 'vim-scripts/Colour-Sampler-Pack.git'
 
-" Ruby
-Plugin 'ruby.vim'
-Plugin 'ftpluginruby.vim'
-Plugin 'ruby-matchit'
-Plugin 'tpope/vim-rails'
-
-" Plugin 'https://github.com/sontek/rope-vim.git'
-" git
 Plugin 'gitv'
 Plugin 'fugitive.vim'
 
-" db
-Plugin 'dbext.vim'
-
 " project
-" Plugin 'unite.vim'
-" Plugin 'neocomplcache'
-Plugin 'Shougo/vimproc.vim'
 Plugin 'tpope/vim-vinegar.git'
-Plugin 'dsawardekar/portkey.git'
 Plugin 'ctrlp.vim'
 Plugin 'mileszs/ack.vim.git'
 Plugin 'yuratomo/w3m.vim.git'
-Plugin 'DfrankUtil'
-Plugin 'vimprj'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-dispatch.git'
 
 " quick motion && edit
-Plugin 'EasyMotion'
 Plugin 'unimpaired.vim'
 Plugin 'delimitMate.vim'
 Plugin 'surround.vim'
@@ -52,24 +34,42 @@ Plugin 'SirVer/ultisnips.git'
 Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'neomake/neomake'
 
 " Code tools
-Plugin 'Syntastic'
-Plugin 'Tagbar'
-Plugin 'cscope.vim'
-Plugin 'xuhdev/SingleCompile'
+" Plugin 'Syntastic'
 Plugin 'Chiel92/vim-autoformat'
-"Plugin 'indexer.tar.gz'
+
+" Plugin 'xuhdev/SingleCompile'
+" Plugin 'cscope.vim'
+" Plugin 'https://github.com/sontek/rope-vim.git'
+" Plugin 'unite.vim'
+" Plugin 'neocomplcache'
+" Plugin 'Shougo/vimproc.vim'
+" Plugin 'dsawardekar/portkey.git'
+" Plugin 'DfrankUtil'
+" Plugin 'vimprj'
+" Plugin 'Tagbar'
+" Plugin 'EasyMotion'
+" Plugin 'indexer.tar.gz'
+" Plugin 'dbext.vim'
+"
+" Plugin 'ruby.vim'
+" Plugin 'ftpluginruby.vim'
+" Plugin 'ruby-matchit'
+" Plugin 'tpope/vim-rails'
 
 " Python
 
 " Php bundles
 "" Bundle 'phpcomplete.vim'
 "" Bundle 'phpfolding.vim'
-Plugin 'techlivezheng/tagbar-phpctags.git'
-Plugin 'shawncplus/phpcomplete.vim.git'
-Plugin 'joonty/vim-phpqa.git'
-Plugin '2072/PHP-Indenting-for-VIm.git'
+" Plugin 'techlivezheng/tagbar-phpctags.git'
+" Plugin 'shawncplus/phpcomplete.vim.git'
+" Plugin 'joonty/vim-phpqa.git'
+" Plugin '2072/PHP-Indenting-for-VIm.git'
+" Plugin 'marijnh/tern_for_vim.git'
+
 
 
 " .NET world
@@ -94,7 +94,6 @@ Plugin 'mustache/vim-mustache-handlebars'
 " js
 Plugin 'isRuslan/vim-es6'
 Plugin 'Enhanced-Javascript-syntax'
-Plugin 'marijnh/tern_for_vim.git'
 Plugin 'jason0x43/vim-js-indent'
 Plugin 'https://github.com/leafgarland/typescript-vim'
 Plugin 'dsawardekar/ember.vim'
@@ -112,33 +111,33 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
-let g:tagbar_type_markdown = {
-    \ 'ctagstype' : 'markdown',
-    \ 'kinds' : [
-        \ 'h:Heading_L1',
-        \ 'i:Heading_L2',
-        \ 'k:Heading_L3'
-    \ ]
-\ }
+" let g:tagbar_type_markdown = {
+"     \ 'ctagstype' : 'markdown',
+"     \ 'kinds' : [
+"         \ 'h:Heading_L1',
+"         \ 'i:Heading_L2',
+"         \ 'k:Heading_L3'
+"     \ ]
+" \ }
 
-let g:vdebug_keymap = {
-\    "run" : "<F5>",
-\    "run_to_cursor" : "<Leader>dc",
-\    "step_over" : "<Leader>dn",
-\    "step_into" : "<Leader>di",
-\    "step_out" : "<Leader>do",
-\    "close" : "<F6>",
-\    "detach" : "<F7>",
-\    "set_breakpoint" : "<Leader>db",
-\    "get_context" : "<Leader>dg",
-\}
+" let g:vdebug_keymap = {
+" \    "run" : "<F5>",
+" \    "run_to_cursor" : "<Leader>dc",
+" \    "step_over" : "<Leader>dn",
+" \    "step_into" : "<Leader>di",
+" \    "step_out" : "<Leader>do",
+" \    "close" : "<F6>",
+" \    "detach" : "<F7>",
+" \    "set_breakpoint" : "<Leader>db",
+" \    "get_context" : "<Leader>dg",
+" \}
 
 " nmap <Leader>e :VimFiler<CR>
 " nmap <Leader>es :VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
 " nmap <Leader>ef :VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit<CR>
 nmap <Leader>b :CtrlPBuffer<CR>
 nmap <Leader>t :Unite tab<CR>
-nmap <Leader>o :TagbarToggle<CR>
+" nmap <Leader>o :TagbarToggle<CR>
 
 map <silent> <Leader>gv :Gitv<cr>
 map <silent> <Leader>gs :Gstatus<cr>
@@ -172,6 +171,7 @@ set foldlevelstart=99
 hi CursorLine cterm=none ctermbg=none guibg=Black
 hi CursorColumn cterm=NONE ctermbg=NONE guibg=NONE
 
+set wildignore+=*/node_modules/*,*/bower_components/*,*/dist/*,*/tmp/*
 " File settings
 set ffs=unix,dos,mac
 set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
@@ -212,6 +212,8 @@ autocmd FileType php let php_sql_query=1
 autocmd FileType php let php_htmlInStrings=1
 autocmd FileType php let php_noShortTags=1
 
+autocmd! BufWritePost,BufEnter * Neomake
+
 " let g:vimfiler_as_default_explorer=1
 
 " let g:dbext_default_profile_mysql_local = 'type=MYSQL:user=root:passwd=1:extra=-t'
@@ -242,7 +244,7 @@ let g:vimprj_changeCurDirIfVimprjFound=0
 let g:syntastic_javascript_checkers = ['eslint']
 
 set t_Co=256
-set tags+=~/.rvm/gems/ruby-2.1.1/gems/tags
+" set tags+=~/.rvm/gems/ruby-2.1.1/gems/tags
 colorscheme vividchalk
 
 if has('gui_running')
@@ -251,7 +253,9 @@ if has('gui_running')
 else
 	" colorscheme desert
 	colorscheme navajo
-    let g:airline_theme='understated'
+	colorscheme Mustang
+	colorscheme molokai
+  let g:airline_theme='understated'
 endif
 
 function! NumberToggle()
