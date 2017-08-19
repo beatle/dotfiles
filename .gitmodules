@@ -1,0 +1,3 @@
+[submodule "vim/pack/ro0gr/start/PProvost/vim-ps1"]
+	path = vim/pack/ro0gr/start/PProvost/vim-ps1
+	url = https://github.com/PProvost/vim-ps1.git
