@@ -1,0 +1,24 @@
+[alias]
+    la = log --graph --abbrev-commit --decorate --date=relative --all
+	ls-branches = branch --sort=committerdate
+[user]
+	name = Ruslan Grabovoy
+	email = kudgo.test@gmail.com
+[core]
+	editor = code --wait --new-window
+	autocrlf = true
+[color]
+    color = auto
+[difftool]
+	prompt = true
+[difftool "code"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[difftool "vs"]
+	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
+	keepBackup = false
+[mergetool]
+	prompt = true
+[mergetool "vs"]
+	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
+	keepBackup = false
+	trustExitCode = true
