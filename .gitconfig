@@ -1,24 +1,23 @@
-[alias]
-    la = log --graph --abbrev-commit --decorate --date=relative --all
-	ls-branches = branch --sort=committerdate
 [user]
 	name = Ruslan Grabovoy
-	email = kudgo.test@gmail.com
+	email = ruslan.grabovoy@betssongroup.com
 [core]
-	editor = code --wait --new-window
 	autocrlf = true
-[color]
-    color = auto
-[difftool]
-	prompt = true
-[difftool "code"]
-    cmd = code --wait --diff $LOCAL $REMOTE
-[difftool "vs"]
-	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
-	keepBackup = false
-[mergetool]
-	prompt = true
-[mergetool "vs"]
-	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
-	keepBackup = false
-	trustExitCode = true
+    # editor = code --wait --new-window
+[http]
+	sslVerify = false
+[alias]
+	la = log --graph --decorate --abbrev-commit --date=relative --pretty=oneline --all
+	recent-branches = branch --sort=committerdate
+    standup = !"git log --reverse --branches --since=$(if [[ "Mon" == "$(date +%a)" ]]; then echo "last friday"; else echo "yesterday"; fi) --author=$(git config --get user.email) --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local"
+[diff]
+;	tool = default-difftool
+[difftool "default-difftool"]
+	cmd = code --wait --new-window --diff $LOCAL $REMOTE 
+[filter "lfs"]
+	smudge = git-lfs smudge --skip -- %f
+	process = git-lfs filter-process --skip
+	required = true
+	clean = git-lfs clean -- %f
+[rerere]
+	enabled = true
