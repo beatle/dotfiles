@@ -155,6 +155,9 @@ imap <F2> <c-o>:w<cr>
 map <Leader>te :tabe %:p:h
 map <Leader>tq :tabc<cr>
 
+
+map <Leader>nc :call RandomColorScheme()<cr>
+
 " I say `no`:
 set nowrap
 set nowritebackup
@@ -244,23 +247,31 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 set t_Co=256
 " set tags+=~/.rvm/gems/ruby-2.1.1/gems/tags
-colorscheme vividchalk
+" colorscheme vividchalk
 
 if has('gui_running')
-	colorscheme intelij
-	" molokai freya silent
+    colorscheme intelij
+    " molokai freya silent
 else
-	" colorscheme desert
-	colorscheme navajo
-	colorscheme Mustang
-	colorscheme molokai
-  let g:airline_theme='understated'
+    " colorscheme desert
+    colorscheme navajo
+    colorscheme Mustang
+    colorscheme molokai
+    colorscheme jellybeans
+    let g:airline_theme='understated'
 endif
 
 function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-  else
-    set relativenumber
-  endif
+    if(&relativenumber == 1)
+        set norelativenumber
+    else
+        set relativenumber
+    endif
 endfunc
+
+function RandomColorScheme()
+    let mycolors = split(globpath(&rtp,"**/colors/*.vim"),"\n")
+    exe 'so ' . mycolors[localtime() % len(mycolors)]
+    unlet mycolors
+endfunction
+
