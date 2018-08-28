@@ -4,8 +4,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
-" let Vundle manage Vundle
-Plugin 'gmarik/Vundle.vim.git'
+Plugin 'VundleVim/Vundle.vim.git'
 
 " Fun
 Plugin 'bling/vim-airline'
